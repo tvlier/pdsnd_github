@@ -191,7 +191,7 @@ def user_stats(df):
 
 
 def read_lines(df):
-    # prompt user for reading lines of raw data
+    # allows user to read raw data, and the number of lines they want to read at the time. Providing an exit after each iteration
 
     read_lines= input("\nWould you like to read lines of raw data (yes or no)?: \n").lower()
     while read_lines !='yes' and read_lines!='no':
