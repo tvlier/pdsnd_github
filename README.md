@@ -2,7 +2,7 @@
 __11/13/2018__
 
 ### Project Title
-##### Udacity Bikeshare Python Project
+##### Udacity Data Science Course Bikeshare Python Project
 
 ### Description
 *From the Udacity project page*:
