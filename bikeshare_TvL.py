@@ -65,8 +65,6 @@ def load_data(city, month, day):
         # filter by day of week to create the new dataframe
         df = df[df['day_of_week'] == day.title()]
 
-    df = df.reset_index(drop=True)
-
     return df
 
 
@@ -159,8 +157,7 @@ def user_stats(df):
     start_time = time.time()
 
     # Display counts of user types
-    user_types_count = df['User Type'].value_counts()
-    print("The count of user types is:\n"+str(user_types_count))
+    print("The count of user types is:\n"+str(df['User Type'].value_counts()))
 
     # Display counts of gender
 
@@ -208,19 +205,17 @@ def read_lines(df):
             except ValueError:
                 y=input("\nPlease enter an integer: \n").lower()
                 continue
-
-        w=int(y)-1
-        print(df.loc[int(x):int(w)])
-        if w >= df.last_valid_index():
+        print(df.iloc[int(x):int(y)])
+        w=int(y)
+        if int(y) >= df.last_valid_index():
              print("You've reached the end of the dataset")
              return
         read_lines= input("\nDo you want to read "+str(y)+" more lines? Enter no to exit: \n").lower()
-        z=int(y)-1
         while read_lines!='no':
-                 x=int(z)+1
-                 z=int(z)+int(y)
-                 print(df.loc[int(x):int(z)])
-                 if z >= df.last_valid_index():
+                 x=w+1
+                 w=int(x)+int(y)
+                 print(df.iloc[int(x):int(w)])
+                 if w >= df.last_valid_index():
                      print("You've reached the end of the dataset")
                      break
                  read_lines= input("\nDo you want to read "+str(y)+" more lines? Enter no to exit: \n").lower()
